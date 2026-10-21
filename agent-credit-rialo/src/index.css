@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', 'Roboto Mono', monospace;
+  }
+  
+  body {
+    font-family: var(--font-sans);
+    background-color: #0b1120;
+    color: #f8fafc;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  code, pre, .font-mono {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Sharp Institutional Border Radius Utility */
+.rounded-sharp {
+  border-radius: 4px;
+}
+
+/* Institutional Card Surfaces */
+.bg-surface-card {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+}
+
+.bg-surface-inset {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+}
+
+/* Subtle Financial Table Row Hover */
+.row-ledger-hover {
+  transition: background-color 150ms ease;
+}
+.row-ledger-hover:hover {
+  background-color: #243247;
+}
+
+/* Certificate Digital Ledger Pattern */
+.passport-certificate-pattern {
+  background-color: #111827;
+  background-image: 
+    linear-gradient(to right, rgba(51, 65, 85, 0.25) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(51, 65, 85, 0.25) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Smooth subtle animations for page transitions */
+.animate-enter {
+  animation: fadeInSlideUp 260ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Digital Stamping Seal Animation */
+.animate-stamp {
+  animation: digitalStamp 380ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes digitalStamp {
+  0% {
+    opacity: 0;
+    transform: scale(1.35) rotate(-6deg);
+  }
+  60% {
+    opacity: 0.95;
+    transform: scale(0.97) rotate(1deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Skeleton loader with subtle institutional shimmer */
+.skeleton-shimmer {
+  background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite ease-in-out;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Custom Scrollbar for Institutional Data Denseness */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0b1120;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}

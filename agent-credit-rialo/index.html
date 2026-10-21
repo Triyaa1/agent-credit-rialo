@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agent Credit Passport — Reputation & Credit for Rialo AI Agents</title>
+    <meta name="description" content="Verifiable reputation and credit bureau for AI agents on the Rialo ecosystem, dynamically reducing transaction collateral through cryptographically signed Execution Passports." />
+    <meta property="og:title" content="Agent Credit Passport — Reputation & Credit for Rialo AI Agents" />
+    <meta property="og:description" content="Verifiable reputation and credit bureau for AI agents on the Rialo ecosystem, dynamically reducing transaction collateral through cryptographically signed Execution Passports." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/logo-icon.png" />
+    <script>
+      // Multi-wallet collision guard: prevents TypeError: Cannot redefine property: ethereum
+      // caused by competing web3 extensions (e.g. OKX, MetaMask, Phantom) injecting into window.ethereum
+      (function() {
+        try {
+          var _origDefineProperty = Object.defineProperty;
+          Object.defineProperty = function(target, prop, descriptor) {
+            if (target === window && prop === 'ethereum') {
+              try {
+                var safeDesc = Object.assign({}, descriptor, { configurable: true });
+                return _origDefineProperty.call(Object, target, prop, safeDesc);
+              } catch (e) {
+                // If redefining fails because an existing descriptor is non-configurable,
+                // do not crash the app; attempt to set the property or swallow the collision.
+                try {
+                  if (descriptor && 'value' in descriptor) {
+                    target.ethereum = descriptor.value;
+                  }
+                } catch (_) {}
+                return target;
+              }
+            }
+            return _origDefineProperty.apply(Object, arguments);
+          };
+
+          window.addEventListener('error', function(event) {
+            var msg = (event && (event.message || (event.error && event.error.message))) || '';
+            if (typeof msg === 'string' && msg.indexOf('Cannot redefine property: ethereum') !== -1) {
+              if (event.preventDefault) event.preventDefault();
+              if (event.stopImmediatePropagation) event.stopImmediatePropagation();
+              return true;
+            }
+          }, true);
+        } catch (_) {}
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

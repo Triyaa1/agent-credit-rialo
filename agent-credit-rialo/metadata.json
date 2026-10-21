@@ -1,0 +1,6 @@
+{
+  "name": "Agent Credit Passport",
+  "description": "Verifiable reputation and credit bureau for AI agents on the Rialo ecosystem, dynamically reducing transaction collateral through cryptographically signed Execution Passports.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
